@@ -1,0 +1,12 @@
+<li>
+  <% if user.avatar? %>
+    <%= image_tag user.avatar, size: Settings.size_user_index %>
+  <% else %>
+    <%= gravatar_for user, size: Settings.size_user_index %>
+  <% end %>
+  <%= link_to user.name, user %>
+  <% if current_user.is_admin? && !current_user?(user)%>
+    | <%= link_to t("delete"), user, method: :delete,
+    data: {confirm: t("you_sure")} %>
+  <% end %>
+</li>

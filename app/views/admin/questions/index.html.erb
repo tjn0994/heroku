@@ -1,0 +1,17 @@
+<% provide :title, t("new_question_title") %>
+<% provide :button_text, t("create_question") %>
+<div class="row">
+  <div class="col-md-4">
+    <center>
+      <h3> <%= t "new_question_title" %> </h3>
+    </center>
+    <%= render "form" %>
+    <br/>
+    <%= link_to t("back"), admin_lesson_path(params[:lesson_id]),
+      class: "btn btn-primary" %>
+  </div>
+  <div class="col-md-8">
+    <%= render "questions" %>
+    <%= will_paginate %>
+  </div>
+</div>

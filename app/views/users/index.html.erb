@@ -1,0 +1,8 @@
+<% provide :title, t("all_users") %>
+<h1><%= t "all_users" %></h1>
+
+<ul class="users background_lesson">
+   <%= render @users %>
+</ul>
+
+ <%= will_paginate %>

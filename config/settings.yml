@@ -1,0 +1,19 @@
+per_page:
+  category: 10
+  course: 10
+  lesson: 10
+  word: 10
+  question: 10
+  user: 5
+image_size: 5
+image_format_accept: "image/jpeg,image/gif,image/png"
+image_width: 200
+image_height: 200
+max_length_word: 50
+max_length_name_lesson: 50
+max_length_name_question: 50
+remember_value: 1
+size_users_helpers: 80
+size_user_index: 80
+size_user_show: 100
+size_user_edit: 80

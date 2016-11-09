@@ -1,0 +1,5 @@
+<h1> <%= t "list_course" %> </h1>
+<%= link_to t("new_course"), new_admin_course_path, class: "btn btn-primary",
+  role: "button" %>
+<%= render "courses" %>
+<%= will_paginate %>

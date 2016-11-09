@@ -1,0 +1,11 @@
+<%= form_for [:admin, @lesson], html: {multipart: true} do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <%= f.label :course_id %>
+  <%= f.collection_select :course_id, @courses, :id, :name %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+  <span class="image">
+    <%= f.file_field :image, accept: Settings.image_format_accept %>
+  </span>
+  <%= f.submit yield(:button_text), class: "btn btn-primary form-control" %>
+<% end %>

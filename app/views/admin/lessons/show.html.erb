@@ -1,0 +1,31 @@
+<br/>
+<div class="row">
+  <div class="col-md-4 ">
+    <%= image_tag(@lesson.image ,class: "image-represent img-rounded") %>
+    <%= link_to t("back"), admin_lessons_path, class: "btn btn-primary btn-lg" %>
+  </div>
+  <div class="col-md-4">
+    <table class="table table-hover">
+      <caption><h3> <%= t "infor_lesson"%> </h3></caption>
+      <tr>
+        <td> <%= t "id_lesson" %> </td>
+        <td> <%= @lesson.id%> </td>
+      </tr>
+      <tr>
+        <td> <%= t "name_lesson" %> </td>
+        <td> <%= @lesson.name %> </td>
+      </tr>
+    </table>
+    <div class="row">
+      <div class="col-md-4">
+        <%= link_to t("create_word"), admin_lesson_words_path(@lesson),
+          class: "btn btn-primary btn-lg" %>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-4">
+        <%= link_to t("create_question"), admin_lesson_questions_path(@lesson),
+          class: "btn btn-danger btn-lg" %>
+      </div>
+    </div>
+  </div>
+</div>

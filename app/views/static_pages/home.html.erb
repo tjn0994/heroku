@@ -1,0 +1,25 @@
+<% provide :title, t("home") %>
+<div class="frame-image">
+  <%= image_tag("h1.png", class: "mySlides") %>
+  <%= image_tag("h2.png", class: "mySlides") %>
+  <%= image_tag("h3.png", class: "mySlides") %>
+  <%= image_tag("h4.png", class: "mySlides") %>
+  <%= image_tag("h5.png", class: "mySlides") %>
+  <a class="w3-btn-floating" id="icon-left"  onclick="plusDivs(-1)">&lt;</a>
+  <a class="w3-btn-floating" id="icon-right" onclick="plusDivs(1)">&gt;</a>
+</div>
+<% if logged_in? %>
+<div class="center jumbotron">
+  <h1> <%= t "introduce" %> </h1>
+  <pre>
+    <%= t "address" %>
+    <%= t "phone" %>
+    <%= t "email" %>
+  </pre>
+</div>
+<% else %>
+<div class="center jumbotron">
+  <h1> <%= t "welcome" %> </h1>
+  <%= link_to "Sign up now!",  new_user_path , class: "btn btn-lg btn-primary" %>
+</div>
+<% end %>

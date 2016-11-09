@@ -1,0 +1,11 @@
+<div class="nested-fields row">
+  <div class="col-md-5">
+    <%= f.collection_select :word_id, @words, :id, :meaning %>
+  </div>
+  <div class="col-md-2">
+    <%= f.check_box :is_correct, class: "form-control",
+      id: "check-box-is-correct" %>
+    <%= t "true" %>
+  </div>
+    <%= link_to_remove_association t("delete"), f, class: "col-md-3" %>
+</div>

@@ -1,0 +1,27 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th> <%= t "stt" %> </th>
+      <th> <%= t "name" %> </th>
+      <th> <%= t "function" %> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each_with_index do |category, index| %>
+    <tr>
+      <td>
+        <%= current_index @categories.current_page,
+          Settings.per_page.category, index %>
+      </td>
+      <td> <%= category.name %> </td>
+      <td>
+        <%= link_to t("edit_category"), edit_admin_category_path(category),
+          class: "btn btn-primary" %>
+        <%= link_to t("delete_category"), admin_category_path(category),
+          method: :delete, data: {confirm: t("message_delete")},
+          class: "btn btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

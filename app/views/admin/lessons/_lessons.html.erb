@@ -1,0 +1,31 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th> <%= t "stt" %> </th>
+      <th> <%= t "name_lesson" %> </th>
+      <th> <%= t "name_course" %> </th>
+      <th> <%= t "function" %> </th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @lessons.each_with_index do |lesson, index| %>
+    <tr>
+      <td>
+        <%= current_index @lessons.current_page,
+          Settings.per_page.lesson, index %>
+      </td>
+      <td> <%= lesson.name %> </td>
+      <td> <%= lesson.course.name %> </td>
+      <td>
+        <%= link_to t("view_detail"), admin_lesson_path(lesson),
+          class: "btn btn-success" %>
+        <%= link_to t("edit_lesson"), edit_admin_lesson_path(lesson),
+          class: "btn btn-primary" %>
+        <%= link_to t("delete_lesson"), admin_lesson_path(lesson),
+          method: :delete, data: {confirm: t("message_delete")},
+          class: "btn btn-danger" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

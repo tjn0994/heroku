@@ -1,0 +1,17 @@
+<% provide :title, t("new_word_title") %>
+<% provide :button_text, t("create_word") %>
+<div class="row">
+  <div class="col-md-4">
+    <center>
+      <h3> <%= t "new_word_title" %> </h3>
+    </center>
+    <%= render "form" %>
+    <br/>
+    <%= link_to t("back"), admin_lesson_path(params[:lesson_id]),
+      class: "btn btn-primary" %>
+  </div>
+  <div class="col-md-8">
+    <%= render "words" %>
+    <%= will_paginate %>
+  </div>
+</div>

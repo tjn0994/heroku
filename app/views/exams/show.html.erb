@@ -1,0 +1,57 @@
+<div class="container">
+  <% if @exam.not_started? %>
+  <nav class="aside">
+    <p id="timer"></p>
+  </nav>
+  <h1 align="center"><%= @exam.name %></h1>
+  <%= form_tag({:controller => "results",:action => "create",:id => 'SubmitTagForm'}) do %>
+  <div class="form-group">
+    <ol class="questions">
+      <% @questions.each do |question| %>
+      <li>
+        <h4><strong><%= question.name %></strong></h4>
+        <% question.answers.each do |answer| %>
+        <div class="radio">
+          <%= radio_button_tag("answer[#{question.id}]", answer.id) %>
+          <%= label(answer, answer.word.meaning)%>
+        </div>
+        <% end %>
+      </li>
+      <% end %>
+    </ol>
+  </div>
+  <%= hidden_field_tag :exam_id,@exam.id %>
+  <div><%= submit_tag("Submit",:class => "submit",:id => "SubmitTag",class: "btn btn-primary") %></div>
+    <% end %>
+  <% else %>
+  <div class="form-group">
+    <ol class="questions">
+      <% @results.each do |result| %>
+      <li>
+        <% question=(get_correspond_question result.question_id) %>
+        <h4><strong><%= question.name %></strong></h4>
+        <% question.answers.each do |answer| %>
+        <% if result.answer_id == answer.id %>
+        <div class="radio">
+          <%= radio_button_tag("answer[#{question.id}]",answer.id, true,disabled: true) %>
+          <%= label(answer, answer.word.meaning) %>
+        </div>
+        <% else %>
+          <div class="radio">
+          <%= radio_button_tag("answer[#{question.id}]", answer.id,false,disabled: true) %>
+          <%= label(answer, answer.word.meaning) %>
+          </div>
+        <% end %>
+        <% end %>
+        <% if !result.answer_id.nil? and correct_answer result.answer_id %>
+        <label class="label label-primary">Correct Answer</label>
+        <% else %>
+        <label class="label label-warning">Wrong Answer</label>
+        <% end %>
+      </li>
+      <% end %>
+    </ol>
+  </div>
+  <% end %>
+</div>
+<%= javascript_include_tag "exam", "data-turbolinks-track": true %>

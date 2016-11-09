@@ -1,0 +1,13 @@
+<div class="row background_lesson padding_top_10px">
+<% @lessons.each  do |lesson| %>
+  <div class="frame-lesson ">
+    <div class="thumbnail background_image">
+      <%= image_tag(lesson.image ,class: "image-represent img-rounded") %>
+      <div class="caption">
+        <h3><%= lesson.name %></h3>
+        <%= link_to "view",  lesson_path(lesson), class: "btn btn-info" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

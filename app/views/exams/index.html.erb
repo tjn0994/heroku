@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-12 col-md-offset-0">
+    <hr>
+    <h2 class="center"><%= t ".exam_list" %></h2>
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr class="info">
+          <th class="created_at"><%= t ".created_date" %></th>
+          <th class="course"><%= t ".course_name" %></th>
+          <th class="lesson"><%= t ".lesson_name" %></th>
+          <th class="status"><%= t ".status" %></th>
+          <th class="duration"><%= t ".duration" %></th>
+          <th class="question_nunmber"><%= t ".question_number" %></th>
+          <th class="spent_time"><%= t ".done_question" %></th>
+          <th class="score"><%= t ".score" %></th>
+          <th class="action"><%= t ".action" %></th>
+        </tr>
+      </thead>
+      <tbody id="body_table_data">
+        <% @exams.each do |exam| %>
+        <tr>
+          <td class="center"><%= l exam.created_at %></td>
+          <td class="center"><%= exam.lesson.course.name %></td>
+          <td class="center"><%= exam.lesson.name %></td>
+          <% if exam.not_started? %>
+          <td>Not Started</td>
+          <% else %>
+          <td>Started</td>
+          <% end %>
+          <td class="center">60 s</td>
+          <td class="center">10</td>
+          <td class="center"><%= exam.done_question.to_s+"/10"%></td>
+          <td class="center"><%= exam.score %></td>
+          <% if exam.not_started? %>
+          <td><%= link_to t("Start"), exam_path(exam),
+            class: "btn btn-primary" %></td>
+            <% else %>
+            <td><%= link_to t("View"), exam_path(exam),
+              class: "btn btn-primary" %></td>
+              <% end %>
+
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+      </div>
+    </div>

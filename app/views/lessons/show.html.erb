@@ -1,0 +1,23 @@
+<br/>
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag(@lesson.image ,class: "image-represent img-rounded") %>
+  </div>
+  <div class="col-md-4">
+    <table class="table table-hover">
+      <caption> <%= t "infor_lesson" %> </caption>
+      <tr>
+        <td><%= t "course_name" %> </td>
+        <td><%= @lesson.course.name%></td>
+      </tr>
+      <tr>
+        <td> <%= t "lesson_name" %></td>
+        <td><%= @lesson.name %></td>
+      </tr>
+    </table>
+
+   <%= link_to "Word List", word_path(@lesson),
+      class: "btn btn-primary btn-lg"%>
+    <%= link_to "Start Lesson",{controller: "exams", action: "create_exam",lesson_id: @lesson.id },class: "btn btn-danger btn-lg" %>
+  </div>
+</div>

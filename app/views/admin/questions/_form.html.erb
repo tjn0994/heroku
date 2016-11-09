@@ -1,0 +1,14 @@
+<%= form_for [:admin, @lesson, @question] do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+  <h5> <%= t "answers" %> </h5>
+  <div id="answers">
+    <%= f.fields_for :answers do |answer| %>
+      <%= render "answer_fields", f: answer %>
+    <% end %>
+    <%= link_to_add_association t("add_answer"), f, :answers %>
+  </div>
+  <br/>
+  <%= f.submit yield(:button_text), class: "btn btn-primary form-control" %>
+<% end %>
